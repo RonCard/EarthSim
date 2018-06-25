@@ -166,3 +166,12 @@ def save_shapefile(cdsdata, path, template):
     with fiona.open(path, 'w', collection.driver, collection.schema, collection.crs) as c:
         c.write(shape_data)
 
+
+def get_hurricane_palette():
+    # set the levels for hurricane specifications
+    levels = [0, 38, 73, 95, 110, 130, 156, 999]
+    # set the standard colors for hurricane specifications
+    colors = ['#5ebaff', '#00faf4', '#ffffcc', '#ffe775', '#ffc140', '#ff8f20', '#ff6060']
+
+    return levels, colors
+

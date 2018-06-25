@@ -207,17 +207,3 @@ def reproject_path(polys, coord_sys):
 
     return reprojected
 
-
-def colors_and_levels(levels, colors, clip=None, N=255):
-    intervals = np.diff(levels)
-    cmin, cmax = min(levels), max(levels)
-    interval = cmax-cmin
-    cmap = []
-    for intv, c in zip(intervals, colors):
-        cmap += [c]*int(N*(intv/interval))
-    if clip is not None:
-        clmin, clmax = clip
-        lidx = int(N*((cmin-clmin)/interval))
-        uidx = int(N*((cmax-clmax)/interval))
-        cmap = cmap[lidx:N-uidx]
-    return cmap
